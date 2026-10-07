@@ -6,7 +6,7 @@ const Scene = dynamic(() => import('@/components/scene'), {
   ssr: false,
   loading: () => (
     <div className="w-full h-screen bg-slate-950 flex items-center justify-center">
-      <p className="text-white text-lg animate-pulse">Loading 3D Environment...</p>
+      <p className="text-white text-lg animate-pulse">WELCOME TO TECHNIOSYS</p>
     </div>
   ),
 });

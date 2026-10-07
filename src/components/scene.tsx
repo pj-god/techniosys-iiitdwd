@@ -8,7 +8,7 @@ import { Experience } from './3d/Experience';
 import { PhaseHero } from './ui/PhaseHero';
 import { PhaseMegaRush } from './ui/PhaseMegaRush';
 import { PhaseTeam } from './ui/PhaseTeam';
-import { Navbar } from './ui/Navbar';
+import Navbar from './ui/Navbar';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -103,7 +103,7 @@ export default function Scene() {
       </div>
 
       {/* FIXED TOP NAVIGATION BAR */}
-      <Navbar currentPhase={currentPhase} onNavigate={scrollToPhase} />
+      <Navbar/>
 
 
       {/* HTML OVERLAYS: 3 DISTINCT SCROLL PHASES (pointer-events-none with interactive children) */}

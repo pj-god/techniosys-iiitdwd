@@ -16,7 +16,7 @@ const rajdhani = Rajdhani({
 });
 
 export const metadata: Metadata = {
-  title: "Techniosys | Premier Technical & Esports Club",
+  title: "Techniosys | IIIT Dharwad",
   description:
     "Where Code Meets Combat. Premier college Technical and Esports club bridging competitive gaming, LAN tournaments, and high-intensity hackathons.",
   keywords: ["Techniosys", "Esports", "Gaming Club", "Hackathon", "College Club", "Mega Rush", "LAN Tournament"],

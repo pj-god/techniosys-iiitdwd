@@ -1,48 +1,39 @@
-import { google } from "googleapis";
+import { getSheetRecords } from "@/lib/googleSheet";
+import {redis} from '@/lib/redis';
+
+const CACHE_KEY = "megarush:test:day1";
+const CACHE_TTL = 30; //seconds will change it to manual trigger
 
 export async function GET() {
-  try {
-    const auth = new google.auth.GoogleAuth({
-      credentials: {
-        project_id: process.env.PROJECT_ID,
-        client_email: process.env.CLIENT_EMAIL,
-        private_key: process.env.PRIVATE_KEY?.replace(/\\n/g, "\n"),
-      },
-      scopes: [
-        "https://www.googleapis.com/auth/spreadsheets.readonly",
-      ],
-    });
+  try{
 
-    const sheets = google.sheets({
-      version: "v4",
-      auth,
-    });
+    const cachedData = await redis.get(CACHE_KEY);
 
-    const response = await sheets.spreadsheets.values.get({
-      spreadsheetId: process.env.SHEET_ID,
-      range: "Day1!A1:Z100",
-    });
+    if(cachedData){
+      return Response.json({
+        success: true,
+        source: 'redis',
+        data: cachedData
+      })
+    }
 
-    console.log("GOOGLE SHEET DATA:");
-    console.log(response.data.values);
+    const data = await getSheetRecords("Day1");
+
+    await redis.set(CACHE_KEY, data, {
+      ex: CACHE_TTL
+    });
 
     return Response.json({
-      success: true,
-      data: response.data.values,
-    });
-  } catch (error) {
-    console.error("GOOGLE SHEETS ERROR:", error);
-
-    return Response.json(
-      {
-        success: false,
-        error: "Failed to fetch Google Sheet",
-        details:
-          process.env.NODE_ENV === "development" && error instanceof Error
-            ? error.message
-            : undefined,
-      },
-      { status: 500 }
-    );
+      success: true, 
+      source: "sheets",
+      data
+    })
+    
+  }catch(err){
+    console.error(err);
+    return Response.json({
+      success: false,
+      error: "Failed to fetch"
+    }, {status: 500});
   }
 }

@@ -17,16 +17,17 @@ export async function GET() {
       })
     }
 
-    const data = await getSheetRecords("Day1");
+    const bgmiData = await getSheetRecords("BGMI");
+    const freeFireData = await getSheetRecords("FreeFire");
 
-    await redis.set(CACHE_KEY, data, {
+    await redis.set(CACHE_KEY, { bgmi: bgmiData, freeFire: freeFireData }, {
       ex: CACHE_TTL
     });
 
     return Response.json({
       success: true, 
       source: "sheets",
-      data
+      data: { bgmi: bgmiData, freeFire: freeFireData }
     })
     
   }catch(err){

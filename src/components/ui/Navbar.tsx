@@ -63,132 +63,10 @@ const Navbar = () => {
                 cursor-pointer
               "
             >
-              MEGA RUSH
-
-              <span
-                className={`text-xs transition-transform duration-200 ${
-                  megaRushOpen ? "rotate-180" : ""
-                }`}
-              >
-                ▾
-              </span>
+              <Link href="/leaderboard">MEGA RUSH 2.0</Link>
             </button>
 
-            {megaRushOpen && (
-              <div
-                className="
-                  absolute right-0 top-[calc(100%+10px)]
-                  w-48
-                  p-2
-                  rounded-xl
-                  bg-[#0d1117]
-                  border border-white/10
-                  shadow-[0_15px_35px_rgba(0,0,0,0.5)]
-                "
-              >
-                <Link
-                  href="/mega-rush/teams"
-                  className="
-                    block px-4 py-3
-                    rounded-lg
-                    text-sm
-                    text-white/70
-                    hover:text-white
-                    hover:bg-white/5
-                    transition-all duration-200
-                  "
-                >
-                  TEAMS
-                </Link>
-
-                <div className="relative">
-                  <button
-                    onClick={() => setLeaderboardOpen(!leaderboardOpen)}
-                    className="
-                      w-full
-                      flex items-center justify-between
-                      px-4 py-3
-                      rounded-lg
-                      text-sm
-                      text-white/70
-                      hover:text-white
-                      hover:bg-white/5
-                      transition-all duration-200
-                      cursor-pointer
-                    "
-                  >
-                    LEADERBOARD
-
-                    <span
-                      className={`text-xs transition-transform duration-200 ${
-                        leaderboardOpen ? "rotate-180" : ""
-                      }`}
-                    >
-                      ▸
-                    </span>
-                  </button>
-
-                  {leaderboardOpen && (
-                    <div
-                      className="
-                        absolute right-full top-0 mr-2
-                        w-44
-                        p-2
-                        rounded-xl
-                        bg-[#0d1117]
-                        border border-white/10
-                        shadow-[0_15px_35px_rgba(0,0,0,0.5)]
-                      "
-                    >
-                      <Link
-                        href="/leaderboard/freefire"
-                        className="
-                          block px-4 py-3
-                          rounded-lg
-                          text-sm
-                          text-white/70
-                          hover:text-white
-                          hover:bg-white/5
-                          transition-all duration-200
-                        "
-                      >
-                        FREE FIRE
-                      </Link>
-
-                      <Link
-                        href="/leaderboard/bgmi"
-                        className="
-                          block px-4 py-3
-                          rounded-lg
-                          text-sm
-                          text-white/70
-                          hover:text-white
-                          hover:bg-white/5
-                          transition-all duration-200
-                        "
-                      >
-                        BGMI
-                      </Link>
-
-                      <Link
-                        href="/leaderboard/smashkarts"
-                        className="
-                          block px-4 py-3
-                          rounded-lg
-                          text-sm
-                          text-white/70
-                          hover:text-white
-                          hover:bg-white/5
-                          transition-all duration-200
-                        "
-                      >
-                        SMASHKARTS
-                      </Link>
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
+            
           </div>
 
           {/* TECHNO RUSH */}
@@ -212,61 +90,9 @@ const Navbar = () => {
               "
             >
               TECHNO RUSH
-
-              <span
-                className={`text-xs transition-transform duration-200 ${
-                  technoRushOpen ? "rotate-180" : ""
-                }`}
-              >
-                ▾
-              </span>
             </button>
 
-            {technoRushOpen && (
-              <div
-                className="
-                  absolute right-0 top-[calc(100%+10px)]
-                  w-48
-                  p-2
-                  rounded-xl
-                  bg-[#0d1117]
-                  border border-white/10
-                  shadow-[0_15px_35px_rgba(0,0,0,0.5)]
-                "
-              >
-                <Link
-                  href="/techno-rush/teams"
-                  className="
-                    block px-4 py-3
-                    rounded-lg
-                    text-sm
-                    text-white/70
-                    hover:text-white
-                    hover:bg-white/5
-                    transition-all duration-200
-                  "
-                >
-                  TEAMS
-                </Link>
-
-                <Link
-                   href="/techno-rush/leaderboard"
-                  className="
-                    w-full
-                    flex items-center justify-between
-                    px-4 py-3
-                    rounded-lg
-                    text-sm
-                    text-white/70
-                    hover:text-white
-                    hover:bg-white/5
-                    transition-all duration-200
-                  "
-                >
-                  LEADERBOARD
-                </Link>
-              </div>
-            )}
+            
           </div>
 
           {/* TEAM */}

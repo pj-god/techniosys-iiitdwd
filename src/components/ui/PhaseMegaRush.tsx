@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { ChevronRight, Maximize2, X, Calendar, Users } from 'lucide-react';
+import { ChevronRight, X, Calendar, Users } from 'lucide-react';
 import { MEGA_RUSH_GALLERY, GalleryItem } from '../utils/constants';
 
 interface PhaseMegaRushProps {
@@ -14,7 +14,7 @@ export function PhaseMegaRush({ onProceed }: PhaseMegaRushProps) {
   return (
     <section className="min-h-screen w-full flex flex-col justify-center items-center px-4 sm:px-6 md:px-12 pt-24 pb-12 relative select-none">
       {/* Main Section Header & Gallery Container */}
-      <div className="w-full max-w-6xl mx-auto my-auto py-6 flex flex-col items-center relative z-10">
+      <div className="w-full max-w-[110rem] mx-auto my-auto py-6 flex flex-col items-center relative z-10">
         {/* Soft Radial Dark Backdrop for Text Legibility */}
         <div className="absolute -inset-10 -z-10 bg-radial from-[#07090e]/80 via-[#07090e]/50 to-transparent blur-2xl pointer-events-none rounded-3xl" />
 
@@ -24,141 +24,122 @@ export function PhaseMegaRush({ onProceed }: PhaseMegaRushProps) {
         </h2>
 
         {/* Description */}
-        <p className="mt-3 text-sm sm:text-base text-slate-300 max-w-2xl text-center leading-relaxed font-sans drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-          Relive the electrifying moments of Techniosys&apos; flagship events, from high-octane esports showdowns to rapid-fire hackathons and grand championship ceremonies.
+        <p className="mt-3 text-sm sm:text-base text-white max-w-2xl text-center leading-relaxed font-sans drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+          Techniosys&apos; flagship events, from high-octane esports showdowns to rapid-fire technical questions and grand api competitions
         </p>
 
-        {/* 3 High-Tech Image Gallery Cards */}
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 w-full pointer-events-auto">
-          {MEGA_RUSH_GALLERY.map((item, idx) => (
-            <div
-              key={item.id}
-              onClick={() => setSelectedItem(item)}
-              className="group relative rounded-xl bg-[#0f172a]/75 backdrop-blur-md border border-slate-800 hover:border-[#00f0ff]/80 transition-all duration-300 overflow-hidden cursor-pointer hover:-translate-y-1.5 shadow-xl hover:shadow-[0_0_25px_rgba(0,240,255,0.25)] flex flex-col"
-            >
-              {/* Image Preview Container */}
-              <div className="relative w-full h-48 sm:h-52 overflow-hidden bg-slate-950">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-500 brightness-90 group-hover:brightness-105"
+        {/* Compact horizontal past-event cards */}
+        <div className="mt-8 grid w-full min-w-0 grid-cols-1 gap-4 md:grid-cols-3 pointer-events-auto">
+          {MEGA_RUSH_GALLERY.map((item, idx) => {
+            const accent =
+              idx === 0
+                ? {
+                    text: 'text-[#ff2874]',
+                    border: 'border-pink-500/70',
+                    badge: 'border-pink-500/40 bg-pink-950/60 text-pink-400',
+                    stripe: 'bg-[#ff2874]',
+                    hover: 'group-hover:border-pink-500/50',
+                  }
+                : idx === 1
+                ? {
+                    text: 'text-[#00e5ff]',
+                    border: 'border-cyan-500/70',
+                    badge: 'border-cyan-500/40 bg-cyan-950/60 text-cyan-300',
+                    stripe: 'bg-[#00e5ff]',
+                    hover: 'group-hover:border-cyan-500/50',
+                  }
+                : {
+                    text: 'text-amber-400',
+                    border: 'border-amber-500/70',
+                    badge: 'border-amber-500/40 bg-amber-950/60 text-amber-400',
+                    stripe: 'bg-amber-500',
+                    hover: 'group-hover:border-amber-500/50',
+                  };
+
+            const statParts = item.stats
+              .split(/\s*[•|]\s*/)
+              .map((part) => part.trim())
+              .filter(Boolean);
+
+            return (
+              <button
+                type="button"
+                key={item.id}
+                onClick={() => setSelectedItem(item)}
+                aria-label={`View details for ${item.title}`}
+                className={`group relative h-80 w-110 min-w-0 overflow-hidden rounded-xl border border-slate-800/90 bg-[#080d12] text-left shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(0,240,255,0.10)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${accent.hover}`}
+              >
+                {/* Image is clipped to the LEFT of the diagonal boundary */}
+                <div
+                  className="absolute inset-0 z-0 overflow-hidden"
+                  style={{
+                    clipPath: 'polygon(0 0, 43% 0, 32% 100%, 0 100%)',
+                  }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/20" />
+                </div>
+
+                {/* Opaque panel covers everything to the RIGHT of the diagonal.
+                    This prevents any part of the image showing beyond the slash. */}
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 z-10 bg-[#080d12]"
+                  style={{
+                    clipPath: 'polygon(43% 0, 100% 0, 100% 100%, 32% 100%)',
+                  }}
                 />
 
-                {/* Cyber Scanline & Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-transparent to-black/40" />
-                <div className="absolute inset-0 cyber-scanlines opacity-20 pointer-events-none" />
+                {/* Diagonal accent sits ABOVE both panels */}
+                <div
+                  aria-hidden="true"
+                  className={`absolute inset-0 z-20 pointer-events-none ${accent.stripe}`}
+                  style={{
+                    clipPath: 'polygon(42.5% 0, 44.2% 0, 33.2% 100%, 31.5% 100%)',
+                  }}
+                />
 
-                {/* Top Badge */}
-                <div className="absolute top-3 left-3 flex items-center gap-2">
-                  <span
-                    className={`px-2.5 py-0.5 rounded text-[10px] font-mono font-bold tracking-wider uppercase border ${
-                      idx === 0
-                        ? 'bg-rose-950/80 text-[#ff0055] border-pink-500/50'
-                        : idx === 1
-                        ? 'bg-cyan-950/80 text-[#00f0ff] border-cyan-500/50'
-                        : 'bg-amber-950/80 text-amber-400 border-amber-500/50'
-                    }`}
-                  >
+                {/* Right-side information */}
+                <div className="absolute inset-0 z-30 flex min-w-0 flex-col justify-between py-3 pl-[46%] pr-3 sm:py-3.5 sm:pr-3.5">
+                  <span className={`w-fit mt-2 max-w-full truncate rounded-full border px-3.5 py-1 text-[12px] font-semibold uppercase tracking-widest ${accent.badge}`}>
                     {item.badge}
                   </span>
-                </div>
 
-                {/* Expand Overlay Icon */}
-                <div className="absolute top-3 right-3 p-1.5 rounded-lg bg-black/60 backdrop-blur-md text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <Maximize2 className="w-3.5 h-3.5" />
-                </div>
+                  <div className="my-1 min-w-0">
+                    <h3 className="font-sans tracking-widest text-sm font-bold uppercase leading-loose text-white transition-colors duration-300 group-hover:text-slate-100 sm:text-[1.2rem]">
+                      {item.title}
+                    </h3>
 
-                {/* Bottom Date Tag */}
-                <div className="absolute bottom-2 left-3 flex items-center gap-1.5 text-[10px] font-mono text-slate-400">
-                  <Calendar className="w-3 h-3 text-[#00f0ff]" />
-                  <span>{item.date}</span>
-                </div>
-              </div>
+                    <div className={`mt-2 flex items-start gap-1.5 text-[10px] leading-snug tracking-widest sm:text-[15px] ${accent.text}`}>
+                      <Users className="mt-0.5 h-3 w-3 shrink-0" />
+                      <span className="line-clamp-1">
+                        {statParts[0] ?? item.stats}
+                      </span>
+                    </div>
 
-              {/* Card Meta Content */}
-              <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
-                <div>
-                  <h3 className="font-heading text-lg font-bold text-white group-hover:text-glow-cyan transition-colors">
-                    {item.title}
-                  </h3>
-                  <div className="mt-1 flex items-center gap-1.5 text-xs font-mono text-[#00f0ff]">
-                    <Users className="w-3.5 h-3.5" />
-                    <span>{item.stats}</span>
+                    {statParts[1] && (
+                      <div className="mt-1 flex items-start gap-1.5 text-[10px] leading-snug tracking-widest text-slate-300 sm:text-[15px]">
+                        <span className={`shrink-0 ${accent.text}`}>◈</span>
+                        <span className="line-clamp-1">{statParts[1]}</span>
+                      </div>
+                    )}
                   </div>
-                  <p className="mt-2 text-xs text-slate-400 leading-relaxed line-clamp-2">
-                    {item.desc}
-                  </p>
-                </div>
 
-                <div className="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono">
-                  <span className="text-slate-500 tracking-wider">STATUS: VERIFIED</span>
-                  <span className="text-[#00f0ff] group-hover:translate-x-1 transition-transform flex items-center gap-0.5">
-                    VIEW DETAILS <ChevronRight className="w-3.5 h-3.5" />
-                  </span>
+                  <div className="flex font-sans tracking-widest min-w-0 items-center gap-1.5 border-t border-slate-800/80 pt-5 pb-2 pr-8 text-[9px] uppercase text-slate-400 sm:text-[10px]">
+                    <Calendar className="h-3 w-3 shrink-0" />
+                    <span className="truncate">{item.date}</span>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              </button>
+            );
+          })}
         </div>
-
-        {/* Optional Proceed CTA */}
-        {onProceed && (
-          <div className="mt-8 flex justify-center pointer-events-auto">
-            <button
-              onClick={onProceed}
-              className="px-6 py-2.5 rounded-lg bg-slate-900/90 hover:bg-slate-850 border border-pink-500/40 hover:border-[#ff0055] text-slate-200 hover:text-white font-mono text-xs tracking-wider uppercase transition-all shadow-[0_0_15px_rgba(255,0,85,0.25)] flex items-center gap-2 cursor-pointer"
-            >
-              <span>NEXT SECTION</span>
-              <ChevronRight className="w-3.5 h-3.5 text-[#ff0055]" />
-            </button>
-          </div>
-        )}
       </div>
-
-      {/* High-Tech Detail Modal */}
-      {selectedItem && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md pointer-events-auto animate-fade-in">
-          <div className="relative w-full max-w-2xl rounded-2xl bg-[#0f172a] border border-[#00f0ff]/60 p-6 shadow-2xl shadow-cyan-950/50">
-            <button
-              onClick={() => setSelectedItem(null)}
-              className="absolute top-4 right-4 p-2 rounded-lg bg-slate-900 text-slate-400 hover:text-white border border-slate-800"
-            >
-              <X className="w-4 h-4" />
-            </button>
-
-            <div className="flex items-center gap-2 mb-3">
-              <span className="px-2 py-0.5 rounded text-[11px] font-mono bg-cyan-950 text-[#00f0ff] border border-cyan-800">
-                {selectedItem.tag}
-              </span>
-              <span className="text-xs font-mono text-slate-400">{selectedItem.date}</span>
-            </div>
-
-            <h3 className="font-heading text-2xl font-bold text-white mb-2">
-              {selectedItem.title}
-            </h3>
-
-            {/* Modal Image */}
-            <div className="relative w-full h-64 rounded-xl overflow-hidden mb-4 border border-slate-800">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={selectedItem.image}
-                alt={selectedItem.title}
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            <p className="text-sm text-slate-300 leading-relaxed mb-4">
-              {selectedItem.desc}
-            </p>
-
-            <div className="p-3 rounded-lg bg-slate-950/80 border border-slate-800 flex items-center justify-between text-xs font-mono text-[#00f0ff]">
-              <span>TOURNAMENT METRIC:</span>
-              <span className="font-bold text-white">{selectedItem.stats}</span>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 }

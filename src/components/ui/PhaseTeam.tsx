@@ -1,7 +1,11 @@
 'use client';
 
-import { ChevronRight } from 'lucide-react';
-import { TEAM_LEADS } from '../utils/constants';
+import { Inter } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+});
+
 
 interface PhaseTeamProps {
   onRestart?: () => void;
@@ -33,141 +37,141 @@ function InstagramIcon({ className = "w-3.5 h-3.5" }: { className?: string }) {
   );
 }
 
+const CLUB_DOMAINS = [
+  {
+    id: "app-development",
+    eyebrow: "MOBILE & APPS",
+    title: "App Development",
+    description:
+      "Building innovative mobile and cross-platform applications that solve real-world problems.",
+    accent: "pink",
+    icon: "▣",
+    image:
+      "/images/app.png",
+    alt: "App Development",
+  },
+  {
+    id: "web-development",
+    eyebrow: "WEB & PLATFORMS",
+    title: "Web Development",
+    description:
+      "Creating modern, scalable web applications and immersive digital experiences for the community.",
+    accent: "cyan",
+    icon: "</>",
+    image:
+      "/images/web.png",
+    alt: "Web Development",
+  },
+  {
+    id: "deep-learning",
+    eyebrow: "AI & RESEARCH",
+    title: "Deep Learning",
+    description:
+      "Exploring the frontiers of artificial intelligence and building intelligent solutions for the future.",
+    accent: "pink",
+    icon: "◎",
+    image:
+      "/images/dl.png",
+    alt: "Deep Learning Domain",
+  },
+  {
+    id: "esports",
+    eyebrow: "GAMING & EVENTS",
+    title: "Esports",
+    description:
+      "Organizing tournaments, fostering competitive gaming, and building a vibrant esports community.",
+    accent: "cyan",
+    icon: "⌁",
+    image:
+      "/images/esports.png",
+    alt: "Esports Domain",
+  },
+];
+
 export function PhaseTeam({ onRestart }: PhaseTeamProps) {
   return (
-    <section className="min-h-screen w-full flex flex-col justify-center items-center px-4 sm:px-6 md:px-12 pt-24 pb-12 relative select-none">
-      {/* Main Section Content */}
-      <div className="w-full max-w-6xl mx-auto my-auto py-6 flex flex-col items-center relative z-10">
-        {/* Soft Radial Dark Backdrop for Text Legibility */}
-        <div className="absolute -inset-10 -z-10 bg-radial from-[#07090e]/80 via-[#07090e]/50 to-transparent blur-2xl pointer-events-none rounded-3xl" />
+    <section className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden px-4 pb-14 pt-24 sm:px-6 md:px-10">
+      {/* Subtle background accents */}
+      <div className="pointer-events-none absolute -left-24 top-12 h-64 w-64 rounded-full bg-cyan-500/[0.04] blur-3xl" />
+      <div className="pointer-events-none absolute -right-24 bottom-8 h-72 w-72 rounded-full bg-pink-500/[0.05] blur-3xl" />
+      <div className="pointer-events-none absolute left-0 top-20 h-40 w-40 border-l border-t border-cyan-400/20" />
+      <div className="pointer-events-none absolute bottom-10 right-0 h-44 w-44 border-b border-r border-pink-500/20" />
 
-        {/* Header: CORE TEAM */}
-        <h2 className="text-4xl sm:text-6xl md:text-7xl font-black font-heading tracking-wider uppercase text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] text-center">
-          CORE <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ff0055] via-[#ff4d8d] to-[#00f0ff]">TEAM</span>
-        </h2>
+      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center">
+        <header className="text-center">
+          <h2 className="font-sans text-4xl font-black uppercase tracking-[0.08em] text-white drop-shadow-[0_3px_16px_rgba(0,0,0,0.5)] sm:text-5xl md:text-7xl">
+            CLUB{" "}
+            <span className="bg-gradient-to-r from-[#ff2d83] via-[#d78bd9] to-[#00e5ff] bg-clip-text text-transparent">
+              DOMAINS
+            </span>
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-white font-medium sm:text-lg">
+            Explore the domains that power Techniosys.
+          </p>
+          <div className="mx-auto mt-4 flex items-center justify-center gap-1.5">
+            <span className="h-px w-12 bg-white" />
+            <span className="h-[3px] w-12 rounded-full bg-gradient-to-r from-[#ff2d83] to-[#00e5ff]" />
+            <span className="h-px w-12 bg-white" />
+          </div>
+        </header>
 
-        {/* Subtitle / Description */}
-        <p className="mt-3 text-sm sm:text-base text-slate-300 max-w-2xl text-center leading-relaxed drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
-          Meet the core team of Techniosys, the leaders and visionaries driving our mission forward.
-        </p>
+        <div className="mt-9 grid w-full grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
+          {CLUB_DOMAINS.map((domain) => {
+            const accent =
+              domain.accent === "pink"
+                ? {
+                    border: "border-[#ff2d83]/70",
+                    text: "text-[#ff2d83]",
+                    glow: "group-hover:shadow-[0_8px_30px_rgba(255,45,131,0.09)]",
+                  }
+                : {
+                    border: "border-[#00e5ff]/70",
+                    text: "text-[#00e5ff]",
+                    glow: "group-hover:shadow-[0_8px_30px_rgba(0,229,255,0.09)]",
+                  };
 
-        {/* Grid of Team Lead Cards */}
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 w-full pointer-events-auto">
-          {TEAM_LEADS.map((lead) => (
-            <div
-              key={lead.id}
-              className="group relative rounded-xl bg-[#0f172a]/75 backdrop-blur-md border border-slate-800 hover:border-[#ff0055]/80 transition-all duration-300 overflow-hidden hover:-translate-y-2 shadow-xl hover:shadow-[0_0_25px_rgba(255,0,85,0.25)] flex flex-col"
-            >
-              {/* Photo Container */}
-              <div className="relative w-full h-56 overflow-hidden bg-slate-950">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={lead.image}
-                  alt={lead.name}
-                  className="w-full h-full object-cover object-center group-hover:scale-108 transition-transform duration-500 brightness-90 group-hover:brightness-105"
-                />
-
-                {/* Cyber Scanlines & Vignette */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-transparent to-black/30" />
-                <div className="absolute inset-0 cyber-scanlines opacity-20 pointer-events-none" />
-
-                {/* Handle / Callout Tag */}
-                <div className="absolute top-3 left-3">
-                  <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold tracking-wider uppercase bg-pink-950/80 text-[#ff0055] border border-pink-500/50">
-                    {lead.handle}
-                  </span>
+            return (
+              <article
+                key={domain.id}
+                className={`group relative flex min-w-0 flex-col overflow-hidden rounded-2xl border border-slate-800/90 bg-[#090e18]/90  transition-[transform,border-color,box-shadow] duration-300 ease-out hover:-translate-y-1 hover:border-cyan-400/60 hover:shadow-[0_8px_30px_rgba(0,229,255,0.12)] ${accent.glow}`}
+              >
+                <div className="relative h-48 overflow-hidden bg-slate-950 sm:h-52">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={domain.image}
+                    alt={domain.alt}
+                    loading="lazy"
+                    className="h-full w-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#090e18] via-[#090e18]/10 to-black/10" />
+                  <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-slate-500/50 to-transparent" />
                 </div>
 
-                {/* Game / Focus Badge */}
-                <div className="absolute bottom-2 left-3 right-3 flex items-center justify-between text-[10px] font-mono text-slate-300 bg-slate-950/60 backdrop-blur-sm px-2 py-1 rounded border border-slate-800">
-                  <span className="text-[#00f0ff] font-semibold">{lead.game}</span>
-                </div>
-              </div>
-
-              {/* Details & Socials */}
-              <div className="p-4 flex-1 flex flex-col justify-between">
-                <div>
-                  <h3 className="font-heading text-lg font-bold text-white group-hover:text-glow-magenta transition-colors">
-                    {lead.name}
-                  </h3>
-                  <p className="text-xs font-mono text-[#ff0055] font-semibold tracking-wide mt-0.5">
-                    {lead.role}
-                  </p>
-                  <p className="mt-2 text-xs text-slate-400 leading-relaxed line-clamp-3">
-                    {lead.bio}
-                  </p>
-                </div>
-
-                {/* Social Links */}
-                <div className="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between">
-                  <span className="text-[10px] font-mono text-slate-500">COMMS:</span>
-                  <div className="flex items-center gap-2">
-                    <a
-                      href={lead.socials.discord || '#'}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-1.5 rounded bg-slate-900 hover:bg-indigo-950 text-slate-400 hover:text-indigo-400 border border-slate-800 transition-colors"
-                      title="Discord"
+                <div className={`flex flex-1 flex-col p-5 ${inter.className}`}>
+                  <div className="mb-3 flex items-center gap-3">
+                    <span
+                      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border bg-slate-950/70 font-sans text-sm ${accent.border} ${accent.text}`}
+                      aria-hidden="true"
                     >
-                      <DiscordIcon className="w-3.5 h-3.5" />
-                    </a>
-                    <a
-                      href={lead.socials.github || '#'}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-1.5 rounded bg-slate-900 hover:bg-slate-850 text-slate-400 hover:text-white border border-slate-800 transition-colors"
-                      title="GitHub"
-                    >
-                      <GithubIcon className="w-3.5 h-3.5" />
-                    </a>
-                    <a
-                      href={lead.socials.instagram || '#'}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-1.5 rounded bg-slate-900 hover:bg-pink-950 text-slate-400 hover:text-pink-400 border border-slate-800 transition-colors"
-                      title="Instagram"
-                    >
-                      <InstagramIcon className="w-3.5 h-3.5" />
-                    </a>
+                      {domain.icon}
+                    </span>
+                    <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-slate-400 sm:text-[11px]">
+                      {domain.eyebrow}
+                    </span>
                   </div>
+
+                  <h3 className="text-xl font-semibold font-sans tracking-wide text-white sm:text-[22px]">
+                    {domain.title}
+                  </h3>
+                  <p className="mt-2.5 flex-1 text-sm leading-[1.8] text-slate-400">
+                    {domain.description}
+                  </p>
+                  <span className={`mt-4 h-[2px] w-8 rounded-full transition-all duration-300 group-hover:w-14 ${domain.accent === "pink" ? "bg-[#ff2d83]" : "bg-[#00e5ff]"}`} />
                 </div>
-              </div>
-            </div>
-          ))}
+              </article>
+            );
+          })}
         </div>
-
-        {/* Join the Squad CTA banner */}
-        <div className="mt-10 w-full max-w-4xl p-4 sm:p-5 rounded-xl bg-gradient-to-r from-pink-950/40 via-slate-900/60 to-cyan-950/40 border border-slate-800 backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-4 pointer-events-auto">
-          <div>
-            <h4 className="font-heading text-sm sm:text-base font-bold text-white">
-              WANT TO JOIN?
-            </h4>
-            <p className="text-xs text-slate-400 font-mono mt-0.5">
-              Recruitment is open for Game Masters, 3D Graphics, Deep Learning, Web/App Dev Teams.
-            </p>
-          </div>
-          <a
-            href="https://discord.gg"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-5 py-2 rounded-lg bg-[#ff0055] hover:bg-[#e0004c] text-white font-mono text-xs font-bold tracking-wider uppercase transition-all shadow-[0_0_15px_rgba(255,0,85,0.4)] whitespace-nowrap flex items-center gap-1.5"
-          >
-            <span>APPLY</span>
-            <ChevronRight className="w-3.5 h-3.5" />
-          </a>
-        </div>
-
-        {/* Optional Return CTA */}
-        {onRestart && (
-          <div className="mt-6 flex justify-center pointer-events-auto">
-            <button
-              onClick={onRestart}
-              className="text-xs font-mono text-slate-400 hover:text-[#00f0ff] tracking-widest uppercase transition-colors"
-            >
-              [ RETURN TO TOP ]
-            </button>
-          </div>
-        )}
       </div>
     </section>
   );

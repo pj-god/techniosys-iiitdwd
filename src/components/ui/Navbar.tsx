@@ -4,9 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 
 const Navbar = () => {
-  const [megaRushOpen, setMegaRushOpen] = useState(false);
-  const [technoRushOpen, setTechnoRushOpen] = useState(false);
-  const [leaderboardOpen, setLeaderboardOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -42,58 +39,29 @@ const Navbar = () => {
 
         {/* ================= DESKTOP NAVIGATION ================= */}
         <div className="hidden md:flex items-center gap-5">
+          <Link
+            href="/leaderboard"
+            className="
+              rounded-lg px-4 py-2.5
+              text-sm font-medium text-white/75
+              transition-all duration-200
+              hover:bg-white/5 hover:text-white
+            "
+          >
+            MEGA RUSH 2.0
+          </Link>
 
-          {/* MEGA RUSH */}
-          <div className="relative">
-            <button
-              onClick={() => {
-                setMegaRushOpen(!megaRushOpen);
-                setLeaderboardOpen(false);
-                setTechnoRushOpen(false);
-              }}
-              className="
-                flex items-center gap-2
-                px-4 py-2.5
-                rounded-lg
-                text-sm font-medium
-                text-white/75
-                hover:text-white
-                hover:bg-white/5
-                transition-all duration-200
-                cursor-pointer
-              "
-            >
-              <Link href="/leaderboard">MEGA RUSH 2.0</Link>
-            </button>
-
-            
-          </div>
-
-          {/* TECHNO RUSH */}
-          <div className="relative">
-            <button
-              onClick={() => {
-                setTechnoRushOpen(!technoRushOpen);
-                setMegaRushOpen(false);
-                setLeaderboardOpen(false);
-              }}
-              className="
-                flex items-center gap-2
-                px-4 py-2.5
-                rounded-lg
-                text-sm font-medium
-                text-white/75
-                hover:text-white
-                hover:bg-white/5
-                transition-all duration-200
-                cursor-pointer
-              "
-            >
-              TECHNO RUSH
-            </button>
-
-            
-          </div>
+          <Link
+            href="/#phase-1"
+            className="
+              rounded-lg px-4 py-2.5
+              text-sm font-medium text-white/75
+              transition-all duration-200
+              hover:bg-white/5 hover:text-white
+            "
+          >
+            TECHNO RUSH
+          </Link>
 
           {/* TEAM */}
           <Link
@@ -114,12 +82,7 @@ const Navbar = () => {
 
         {/* ================= MOBILE MENU BUTTON ================= */}
         <button
-          onClick={() => {
-            setMobileMenuOpen(!mobileMenuOpen);
-            setMegaRushOpen(false);
-            setTechnoRushOpen(false);
-            setLeaderboardOpen(false);
-          }}
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="
             md:hidden
             flex flex-col justify-center items-center
@@ -165,18 +128,11 @@ const Navbar = () => {
             shadow-[0_15px_35px_rgba(0,0,0,0.5)]
           "
         >
-          {/* MEGA RUSH */}
-          <button
-            onClick={() => {
-              setMegaRushOpen(!megaRushOpen);
-              setTechnoRushOpen(false);
-              setLeaderboardOpen(false);
-            }}
+          <Link
+            href="/leaderboard"
+            onClick={() => setMobileMenuOpen(false)}
             className="
-              w-full
-              flex items-center justify-between
-              px-4 py-3
-              rounded-lg
+              block rounded-lg px-4 py-3
               text-sm font-medium
               text-white/75
               hover:text-white
@@ -184,111 +140,14 @@ const Navbar = () => {
               transition-all duration-200
             "
           >
-            MEGA RUSH
+            MEGA RUSH 2.0
+          </Link>
 
-            <span
-              className={`transition-transform duration-200 ${
-                megaRushOpen ? "rotate-180" : ""
-              }`}
-            >
-              ▾
-            </span>
-          </button>
-
-          {megaRushOpen && (
-            <div className="ml-3 border-l border-white/10 pl-2">
-              <Link
-                href="/mega-rush/teams"
-                onClick={() => setMobileMenuOpen(false)}
-                className="
-                  block px-4 py-3
-                  rounded-lg
-                  text-sm
-                  text-white/60
-                  hover:text-white
-                  hover:bg-white/5
-                "
-              >
-                TEAMS
-              </Link>
-
-              <button
-                onClick={() => setLeaderboardOpen(!leaderboardOpen)}
-                className="
-                  w-full
-                  flex items-center justify-between
-                  px-4 py-3
-                  rounded-lg
-                  text-sm
-                  text-white/60
-                  hover:text-white
-                  hover:bg-white/5
-                "
-              >
-                LEADERBOARD
-                <span
-                  className={`transition-transform ${
-                    leaderboardOpen ? "rotate-90" : ""
-                  }`}
-                >
-                  ▸
-                </span>
-              </button>
-
-              {leaderboardOpen && (
-                <div className="ml-3 border-l border-white/10 pl-2">
-                  <Link
-                    href="/leaderboard/freefire"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="
-                      block px-4 py-2.5
-                      text-sm text-white/50
-                      hover:text-white
-                    "
-                  >
-                    FREE FIRE
-                  </Link>
-
-                  <Link
-                    href="/leaderboard/bgmi"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="
-                      block px-4 py-2.5
-                      text-sm text-white/50
-                      hover:text-white
-                    "
-                  >
-                    BGMI
-                  </Link>
-
-                  <Link
-                    href="/leaderboard/smashkarts"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="
-                      block px-4 py-2.5
-                      text-sm text-white/50
-                      hover:text-white
-                    "
-                  >
-                    SMASHKARTS
-                  </Link>
-                </div>
-              )}
-            </div>
-          )}
-
-          {/* TECHNO RUSH */}
-          <button
-            onClick={() => {
-              setTechnoRushOpen(!technoRushOpen);
-              setMegaRushOpen(false);
-              setLeaderboardOpen(false);
-            }}
+          <Link
+            href="/#phase-1"
+            onClick={() => setMobileMenuOpen(false)}
             className="
-              w-full
-              flex items-center justify-between
-              px-4 py-3
-              rounded-lg
+              block rounded-lg px-4 py-3
               text-sm font-medium
               text-white/75
               hover:text-white
@@ -297,52 +156,8 @@ const Navbar = () => {
             "
           >
             TECHNO RUSH
+          </Link>
 
-            <span
-              className={`transition-transform duration-200 ${
-                technoRushOpen ? "rotate-180" : ""
-              }`}
-            >
-              ▾
-            </span>
-          </button>
-
-          {technoRushOpen && (
-            <div className="ml-3 border-l border-white/10 pl-2">
-              <Link
-                href="/techno-rush/teams"
-                onClick={() => setMobileMenuOpen(false)}
-                className="
-                  block px-4 py-3
-                  rounded-lg
-                  text-sm
-                  text-white/60
-                  hover:text-white
-                  hover:bg-white/5
-                "
-              >
-                TEAMS
-              </Link>
-
-              <Link
-                href="/techno-rush/leaderboard"
-                className="
-                  w-full
-                  text-left
-                  px-4 py-3
-                  rounded-lg
-                  text-sm
-                  text-white/60
-                  hover:text-white
-                  hover:bg-white/5
-                "
-              >
-                LEADERBOARD
-              </Link>
-            </div>
-          )}
-
-          {/* TEAM */}
           <Link
             href="/team"
             onClick={() => setMobileMenuOpen(false)}

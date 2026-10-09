@@ -108,11 +108,6 @@ export function PhaseTeam({ onRestart }: PhaseTeamProps) {
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-white font-medium sm:text-lg">
             Explore the domains that power Techniosys.
           </p>
-          <div className="mx-auto mt-4 flex items-center justify-center gap-1.5">
-            <span className="h-px w-12 bg-white" />
-            <span className="h-[3px] w-12 rounded-full bg-gradient-to-r from-[#ff2d83] to-[#00e5ff]" />
-            <span className="h-px w-12 bg-white" />
-          </div>
         </header>
 
         <div className="mt-9 grid w-full grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">

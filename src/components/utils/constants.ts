@@ -119,10 +119,10 @@ export const TEAM_LEADS: TeamMember[] = [
 ];
 
 export const CLUB_STATS = [
-  { label: "Participants", value: "500+" },
-  { label: "Tournaments Hosted", value: "3+" },
-  { label: "Prize Pool Distributed", value: "Rs. 18,500" },
-  { label: "Technical Domains", value: "4+" },
+  { label: "Participants", value: "1000+" },
+  { label: "Tournaments Hosted", value: "10+" },
+  { label: "Prize Pool Distributed", value: "₹100k" },
+  { label: "Technical Domains", value: "4" },
 ];
 
 export const NAV_LINKS = [

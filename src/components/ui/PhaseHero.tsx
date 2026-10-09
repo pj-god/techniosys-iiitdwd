@@ -1,6 +1,6 @@
 'use client';
 
-import { Cpu, Gamepad2 } from 'lucide-react';
+import { Users, Gamepad2, Trophy, Code2 } from 'lucide-react';
 import { CLUB_STATS } from '../utils/constants';
 
 interface PhaseHeroProps {
@@ -69,29 +69,42 @@ export function PhaseHero(_props: PhaseHeroProps) {
           </a>
         </div>
 
-        {/* Key Club Stats Bar */}
-        <div className="mt-14 w-full max-w-4xl grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 pointer-events-auto">
-          {CLUB_STATS.map((stat, idx) => (
-            <div
-              key={stat.label}
-              className="p-3.5 sm:p-4 rounded-xl bg-[#0f172a]/75 backdrop-blur-md border border-slate-800/90 hover:border-cyan-500/50 transition-colors group text-center shadow-lg"
-            >
-              <div className="flex items-center justify-center gap-1.5 mb-1">
-                {idx % 2 === 0 ? (
-                  <Cpu className="w-3.5 h-3.5 text-[#00f0ff] group-hover:animate-spin" />
-                ) : (
-                  <Gamepad2 className="w-3.5 h-3.5 text-[#ff0055]" />
-                )}
-                <span className="font-heading text-xl sm:text-2xl font-black text-white group-hover:text-glow-cyan transition-all">
-                  {stat.value}
-                </span>
-              </div>
-              <p className="text-[11px] font-mono text-slate-400 tracking-wider uppercase">
-                {stat.label}
-              </p>
-            </div>
-          ))}
-        </div>
+{/* Key Club Stats Bar */}
+<div className="mt-12 w-full max-w-6xl grid grid-cols-2 md:grid-cols-4 pointer-events-auto">
+  {CLUB_STATS.map((stat, idx) => (
+    <div
+      key={stat.label}
+      className={`group flex flex-col items-center justify-center py-4 px-2 sm:px-4 transition-all duration-300 ${
+        idx % 2 === 0 ? 'border-r-2 border-white/30 md:border-r' : ''
+      } ${
+        idx < 2 ? 'border-b-2 border-white/30 md:border-b-0' : ''
+      } ${
+        idx !== CLUB_STATS.length - 1 ? 'md:border-r-2 md:border-white/30' : ''
+      }`}
+    >
+      <div className="flex items-center justify-center gap-3 mb-2">
+        {idx === 0 ? (
+          <Users className="w-6 h-6 sm:w-7 sm:h-7 text-[#00f0ff] shrink-0" />
+        ) : idx === 1 ? (
+          <Gamepad2 className="w-6 h-6 sm:w-7 sm:h-7 text-[#ff0055] shrink-0" />
+        ) : idx === 2 ? (
+          <Trophy className="w-6 h-6 sm:w-7 sm:h-7 text-[#00f0ff] shrink-0" />
+        ) : (
+          <Code2 className="w-6 h-6 sm:w-7 sm:h-7 text-[#ff0055] shrink-0" />
+        )}
+
+        <span className="font-heading text-xl sm:text-2xl font-black text-white whitespace-nowrap group-hover:text-glow-cyan transition-all">
+          {stat.value}
+        </span>
+      </div>
+
+      <p className="text-[9px] sm:text-[13px] font-mono text-white tracking-widest  uppercase text-center">
+        {stat.label}
+      </p>
+    </div>
+  ))}
+</div>
+
       </div>
     </section>
   );

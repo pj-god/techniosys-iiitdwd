@@ -118,13 +118,6 @@ export default function Scene() {
         </section>
 
         {/* PHASE 2: PAST HIGHLIGHT EVENT (MEGA RUSH) */}
-        <section
-          ref={section1Ref}
-          id="phase-1"
-          className="min-h-screen w-full flex items-center justify-center relative"
-        >
-          <PhaseMegaRush onProceed={() => scrollToPhase(2)} />
-        </section>
 
         {/* PHASE 3: LEADERSHIP & CORE TEAM */}
         <section
@@ -133,6 +126,14 @@ export default function Scene() {
           className="min-h-screen w-full flex items-center justify-center relative"
         >
           <PhaseTeam onRestart={() => scrollToPhase(0)} />
+        </section>
+
+        <section
+          ref={section1Ref}
+          id="phase-1"
+          className="min-h-screen w-full flex items-center justify-center relative"
+        >
+          <PhaseMegaRush onProceed={() => scrollToPhase(2)} />
         </section>
       </main>
 

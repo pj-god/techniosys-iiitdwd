@@ -1,8 +1,6 @@
 import { getSheetRecords } from "@/lib/googleSheet";
 import {redis} from '@/lib/redis';
-
-const CACHE_KEY = "megarush:test:day1";
-const CACHE_TTL = 30; //seconds will change it to manual trigger
+import { CACHE_KEY } from "@/components/utils/constants";
 
 export async function GET() {
   try{
@@ -20,9 +18,7 @@ export async function GET() {
     const bgmiData = await getSheetRecords("BGMI");
     const freeFireData = await getSheetRecords("FreeFire");
 
-    await redis.set(CACHE_KEY, { bgmi: bgmiData, freeFire: freeFireData }, {
-      ex: CACHE_TTL
-    });
+    await redis.set(CACHE_KEY, { bgmi: bgmiData, freeFire: freeFireData });
 
     return Response.json({
       success: true, 

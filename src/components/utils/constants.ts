@@ -130,3 +130,5 @@ export const NAV_LINKS = [
   { label: "MEGA RUSH // 02", targetPhase: 1, title: "Flagship Event" },
   { label: "COMMAND // 03", targetPhase: 2, title: "Team Leads" },
 ];
+
+export const CACHE_KEY = "megarush";

@@ -92,24 +92,22 @@ export function ClubMembers() {
       <div className="pointer-events-none absolute bottom-10 right-0 h-44 w-44 border-b border-r border-pink-500/20" />
 
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center">
-        <header className="text-center">
+        <header className="text-left">
           <Link
-            className="mb-6 inline-flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-950/70 px-4 py-2 text-xs font-mono font-bold uppercase tracking-widest text-slate-300 transition-colors hover:border-[#00e5ff]/60 hover:text-[#00e5ff]"
+            className="mb-6 justify-self-left inline-flex gap-2 rounded-lg border border-slate-700 bg-slate-950/70 px-4 py-2 text-xs font-mono font-bold uppercase tracking-widest text-slate-300 transition-colors hover:border-[#00e5ff]/60 hover:text-[#00e5ff]"
             href="/"
           >
             <ArrowLeft aria-hidden="true" className="h-4 w-4" />
-            Back to Home
+            Home
           </Link>
-          <p className="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-[#00e5ff]">
-            Techniosys // Leadership
-          </p>
+          
           <h1 className="mt-3 font-sans text-4xl font-black uppercase tracking-[0.08em] text-white drop-shadow-[0_3px_16px_rgba(0,0,0,0.5)] sm:text-5xl md:text-7xl">
-            CLUB{' '}
+            CORE{' '}
             <span className="bg-gradient-to-r from-[#ff2d83] via-[#d78bd9] to-[#00e5ff] bg-clip-text text-transparent">
               TEAM
             </span>
           </h1>
-          <p className="mx-auto mt-3 max-w-2xl text-sm font-medium leading-relaxed text-white sm:text-lg">
+          <p className="mx-auto justify-self-center mt-3 max-w-2xl text-sm font-medium leading-relaxed text-white sm:text-lg">
             Meet the members leading Techniosys.
           </p>
           <div className="mx-auto mt-4 flex items-center justify-center gap-1.5">
@@ -157,10 +155,7 @@ export function ClubMembers() {
 
                   <div className="flex flex-1 flex-col p-5">
                     <div className="mb-3 flex items-center gap-3">
-                      <span className={`h-2.5 w-2.5 rounded-full ${isPink ? 'bg-[#ff2d83]' : 'bg-[#00e5ff]'}`} />
-                      <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-slate-400 sm:text-[11px]">
-                        Club Member
-                    </span>
+                      
                   </div>
                   <h2 className="font-sans text-xl font-semibold tracking-wide text-white sm:text-[22px]">
                     {member.name}

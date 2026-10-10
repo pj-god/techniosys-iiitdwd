@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Orbitron, Rajdhani } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/ui/Navbar";
 
 const orbitron = Orbitron({
   variable: "--font-orbitron",
@@ -39,6 +40,7 @@ export default function RootLayout({
       className={`${orbitron.variable} ${rajdhani.variable} dark antialiased`}
     >
       <body className="min-h-screen bg-[#07090e] text-[#f8fafc] font-sans selection:bg-[#00f0ff]/30 selection:text-[#00f0ff] overflow-x-hidden">
+        <Navbar />
         {children}
       </body>
     </html>

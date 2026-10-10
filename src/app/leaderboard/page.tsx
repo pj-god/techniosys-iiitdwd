@@ -170,23 +170,8 @@ const LeaderboardPage = () => {
 
   return (
     <div className="relative z-10 mx-auto w-[80%] min-w-[320px] py-10 text-white">
-      <Link
-        href="/"
-        className="mb-4 inline-flex cursor-pointer items-center gap-2 rounded-md border border-slate-500 px-3 py-2 text-sm text-slate-200 hover:border-sky-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-sky-500"
-      >
-        <svg
-          className="h-4 w-4"
-          viewBox="0 0 20 20"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          aria-hidden="true"
-        >
-          <path d="M12.5 4.5 7 10l5.5 5.5M7.5 10h9" />
-        </svg>
-        Home
-      </Link>
-      <h2 className="mb-6 text-center text-3xl font-bold">Leaderboard</h2>
+      
+      <h2 className="mb-6 mt-22 text-center text-3xl font-bold">Leaderboard</h2>
 
       <div className="mb-6 flex items-center justify-end gap-2">
         <span className="text-sm text-slate-300">Game</span>

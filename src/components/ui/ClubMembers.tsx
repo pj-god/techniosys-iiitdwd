@@ -85,21 +85,14 @@ function CartoonAvatar({
 
 export function ClubMembers() {
   return (
-    <section className="relative flex min-h-screen w-full flex-col items-center overflow-hidden px-4 pb-14 pt-8 sm:px-6 md:px-10">
+    <section className="relative flex min-h-screen w-full flex-col mt-6 items-center overflow-hidden px-4 pb-14 pt-8 sm:px-6 md:px-10">
       <div className="pointer-events-none absolute -left-24 top-12 h-64 w-64 rounded-full bg-cyan-500/[0.04] blur-3xl" />
       <div className="pointer-events-none absolute -right-24 bottom-8 h-72 w-72 rounded-full bg-pink-500/[0.05] blur-3xl" />
       <div className="pointer-events-none absolute left-0 top-20 h-40 w-40 border-l border-t border-cyan-400/20" />
       <div className="pointer-events-none absolute bottom-10 right-0 h-44 w-44 border-b border-r border-pink-500/20" />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center">
+      <div className="relative z-10 mx-auto mt-18 flex w-full max-w-7xl flex-col items-center">
         <header className="text-left">
-          <Link
-            className="mb-6 justify-self-left inline-flex gap-2 rounded-lg border border-slate-700 bg-slate-950/70 px-4 py-2 text-xs font-mono font-bold uppercase tracking-widest text-slate-300 transition-colors hover:border-[#00e5ff]/60 hover:text-[#00e5ff]"
-            href="/"
-          >
-            <ArrowLeft aria-hidden="true" className="h-4 w-4" />
-            Home
-          </Link>
           
           <h1 className="mt-3 font-sans text-4xl font-black uppercase tracking-[0.08em] text-white drop-shadow-[0_3px_16px_rgba(0,0,0,0.5)] sm:text-5xl md:text-7xl">
             CORE{' '}

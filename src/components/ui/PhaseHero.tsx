@@ -75,7 +75,7 @@ export function PhaseHero(_props: PhaseHeroProps) {
           href="https://forms.gle/PEEuswnfL1jV5j3j8"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-12 inline-block px-6 py-3 sm:px-8 sm:py-4 rounded-lg bg-gradient-to-r from-[#00f0ff] via-[#38bdf8] to-[#ff0055] text-white font-semibold text-lg sm:text-xl tracking-wide shadow-[0_0_18px_rgba(0,240,255,0.2)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_22px_rgba(0,240,255,0.3)]"
+          className="mt-10 inline-block px-5 py-3 sm:px-6 sm:py-3 rounded-lg bg-gradient-to-r from-[#00f0ff] via-[#38bdf8] to-[#ff0055] text-white font-semibold text-sm sm:text-base tracking-wide shadow-[0_0_18px_rgba(0,240,255,0.2)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_22px_rgba(0,240,255,0.3)]"
         >
           Registration for Mega Rush 2.0 is live!
         </a>

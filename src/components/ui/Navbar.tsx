@@ -52,7 +52,7 @@ const Navbar = () => {
           </Link>
 
           <Link
-            href="/#phase-1"
+            href="/techno-rush"
             className="
               rounded-lg px-4 py-2.5
               text-sm font-medium text-white/75
@@ -77,6 +77,21 @@ const Navbar = () => {
             "
           >
             TEAM
+          </Link>
+          {/* Past Events */}
+          <Link
+            href="#past-events"
+            className="
+              px-4 py-2.5
+              rounded-lg
+              text-sm font-medium
+              text-white/75
+              hover:text-white
+              hover:bg-white/5
+              transition-all duration-200
+            "
+          >
+            PAST EVENTS
           </Link>
         </div>
 
@@ -144,7 +159,7 @@ const Navbar = () => {
           </Link>
 
           <Link
-            href="/#phase-1"
+            href="/techno-rush"
             onClick={() => setMobileMenuOpen(false)}
             className="
               block rounded-lg px-4 py-3
@@ -173,6 +188,23 @@ const Navbar = () => {
             "
           >
             TEAM
+          </Link>
+
+          <Link
+            href="#past-events"
+            onClick={() => setMobileMenuOpen(false)}
+            className="
+              block
+              px-4 py-3
+              rounded-lg
+              text-sm font-medium
+              text-white/75
+              hover:text-white
+              hover:bg-white/5
+              transition-all duration-200
+            "
+          >
+            PAST EVENTS
           </Link>
         </div>
       )}

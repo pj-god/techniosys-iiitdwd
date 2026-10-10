@@ -130,7 +130,7 @@ export default function Scene() {
 
         <section
           ref={section1Ref}
-          id="phase-1"
+          id="past-events"
           className="min-h-screen w-full flex items-center justify-center relative"
         >
           <PhaseMegaRush onProceed={() => scrollToPhase(2)} />

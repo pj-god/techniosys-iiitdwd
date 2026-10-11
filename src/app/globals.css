@@ -108,22 +108,14 @@ h1, h2, h3, h4, .font-heading {
     linear-gradient(to bottom, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
 }
 
-/* Custom Cyber Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
+/* Hide scrollbars without disabling page or container scrolling. */
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-::-webkit-scrollbar-track {
-  background: #07090e;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #00f0ff;
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #ff0055;
+*::-webkit-scrollbar {
+  display: none;
 }
 
 /* Pulse Keyframes */

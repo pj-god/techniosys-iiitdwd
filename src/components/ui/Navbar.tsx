@@ -39,6 +39,7 @@ const Navbar = () => {
 
         {/* ================= DESKTOP NAVIGATION ================= */}
         <div className="hidden md:flex items-center gap-5">
+          
           <Link
             href="/leaderboard"
             className="
@@ -48,7 +49,7 @@ const Navbar = () => {
               hover:bg-white/5 hover:text-white
             "
           >
-            MEGA RUSH 2.0
+            MEGA RUSH
           </Link>
 
           <Link
@@ -155,7 +156,7 @@ const Navbar = () => {
               transition-all duration-200
             "
           >
-            MEGA RUSH 2.0
+            MEGA RUSH
           </Link>
 
           <Link

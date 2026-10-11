@@ -8,6 +8,8 @@ import { Experience } from './3d/Experience';
 import { PhaseHero } from './ui/PhaseHero';
 import { PhaseMegaRush } from './ui/PhaseMegaRush';
 import { PhaseTeam } from './ui/PhaseTeam';
+import Navbar from './ui/Navbar';
+
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -78,6 +80,7 @@ export default function Scene() {
 
   return (
     <div ref={containerRef} className="relative w-full bg-[#07090e] text-[#f8fafc] overflow-x-hidden">
+    <Navbar />
       {/* BACKGROUND 3D CANVAS (Renders behind HTML overlays) */}
       <div className="fixed inset-0 z-0 pointer-events-auto">
         <Canvas

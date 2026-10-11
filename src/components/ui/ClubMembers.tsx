@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import type { ReactNode } from 'react';
 import membersData from './club-members.json';
+import Navbar from './Navbar';
 
 type Accent = 'pink' | 'cyan' | 'purple' | 'gold';
 type Member = {
@@ -130,6 +131,7 @@ export function ClubMembers() {
   const data = membersData as { executive: Member[]; leads: Member[]; domains: Domain[] };
   return (
     <section className="relative isolate min-h-screen w-full overflow-hidden bg-[#050912] px-4 pb-14 pt-8 text-white sm:px-6 md:px-10">
+      <Navbar />
       <div className="pointer-events-none absolute -left-28 -top-20 h-80 w-80 rounded-full border border-cyan-400/10" />
       <div className="pointer-events-none absolute -right-24 top-0 h-72 w-72 rounded-full border border-pink-400/10" />
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,rgba(12,40,65,0.22),transparent_58%)]" />

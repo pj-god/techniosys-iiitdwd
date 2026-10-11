@@ -1,7 +1,9 @@
 "use client";
 
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import Link from "next/link";
+import HomeButton from "@/components/ui/HomeButton";
+import Navbar from "@/components/ui/Navbar";
+import { Nabla } from "next/font/google";
 
 type TeamRow = {
   ID: string;
@@ -169,8 +171,9 @@ const LeaderboardPage = () => {
   const pools = useMemo(() => (data ? buildPools(data[game] ?? []) : []), [data, game]);
 
   return (
+    <>
+    <Navbar />
     <div className="relative z-10 mx-auto w-[80%] min-w-[320px] py-10 text-white">
-      
       <h2 className="mb-6 mt-22 text-center text-3xl font-bold">Leaderboard</h2>
 
       <div className="mb-6 flex items-center justify-end gap-2">
@@ -255,6 +258,7 @@ const LeaderboardPage = () => {
         </section>
       ))}
     </div>
+    </>
   );
 };
 

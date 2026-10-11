@@ -3,6 +3,7 @@
 import { Users, Gamepad2, Trophy, Code2 } from 'lucide-react';
 import { CLUB_STATS } from '../utils/constants';
 
+
 interface PhaseHeroProps {
   onExplore: () => void;
 }
@@ -70,7 +71,7 @@ export function PhaseHero(_props: PhaseHeroProps) {
         </div>
 
         {/* Register for the upcoming mega rush event */}
-        <div className="flex items-center justify-center gap-5 pointer-events-auto">
+        {/* <div className="flex items-center justify-center gap-5 pointer-events-auto">
         <a
           href="https://forms.gle/PEEuswnfL1jV5j3j8"
           target="_blank"
@@ -79,7 +80,7 @@ export function PhaseHero(_props: PhaseHeroProps) {
         >
           Registration for Mega Rush 2.0 is live!
         </a>
-        </div>
+        </div> */}
         
 
 {/* Key Club Stats Bar */}

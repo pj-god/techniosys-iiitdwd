@@ -40,7 +40,6 @@ export default function RootLayout({
       className={`${orbitron.variable} ${rajdhani.variable} dark antialiased`}
     >
       <body className="min-h-screen bg-[#07090e] text-[#f8fafc] font-sans selection:bg-[#00f0ff]/30 selection:text-[#00f0ff] overflow-x-hidden">
-        <Navbar />
         {children}
       </body>
     </html>
